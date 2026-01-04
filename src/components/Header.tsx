@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t, language, setLanguage, isRTL } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,12 +17,16 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#product", label: "OUXI V8" },
-    { href: "#features", label: "Features" },
-    { href: "#pricing", label: "Pricing" },
-    { href: "#about", label: "About" },
-    { href: "#contact", label: "Contact" },
+    { href: "#product", label: t("nav.product") },
+    { href: "#features", label: t("nav.features") },
+    { href: "#pricing", label: t("nav.pricing") },
+    { href: "#about", label: t("nav.about") },
+    { href: "#contact", label: t("nav.contact") },
   ];
+
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "ar" : "en");
+  };
 
   return (
     <header
@@ -53,10 +59,17 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA + Language Toggle */}
           <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors text-sm font-medium"
+            >
+              <Globe className="w-4 h-4" />
+              {language === "en" ? "العربية" : "English"}
+            </button>
             <Button variant="default" size="default">
-              Reserve Now
+              {t("nav.reserve")}
             </Button>
           </div>
 
@@ -83,8 +96,15 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="default" size="lg" className="mt-4">
-                Reserve Now
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center gap-2 px-4 py-3 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors font-medium"
+              >
+                <Globe className="w-4 h-4" />
+                {language === "en" ? "العربية" : "English"}
+              </button>
+              <Button variant="default" size="lg" className="mt-2">
+                {t("nav.reserve")}
               </Button>
             </nav>
           </div>

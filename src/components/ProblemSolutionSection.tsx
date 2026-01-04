@@ -1,43 +1,53 @@
 import { TrendingDown, Frown, Sparkles, Rocket } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProblemSolutionSection = () => {
+  const { t, isRTL } = useLanguage();
+
   const problems = [
     {
       icon: TrendingDown,
-      title: "Overpriced",
-      description: "E-bikes in Saudi cost 4,000–6,000 SAR",
+      title: t("problem.item1.title"),
+      description: t("problem.item1.desc"),
     },
     {
       icon: Frown,
-      title: "Boring Designs",
-      description: "Generic looks that don't stand out",
+      title: t("problem.item2.title"),
+      description: t("problem.item2.desc"),
     },
     {
       icon: Sparkles,
-      title: "Not Youth-Focused",
-      description: "Made for utility, not style",
+      title: t("problem.item3.title"),
+      description: t("problem.item3.desc"),
     },
+  ];
+
+  const solutionItems = [
+    t("solution.item1"),
+    t("solution.item2"),
+    t("solution.item3"),
+    t("solution.item4"),
   ];
 
   return (
     <section className="py-24 relative overflow-hidden section-glow">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className={`grid lg:grid-cols-2 gap-16 items-center ${isRTL ? "lg:grid-flow-dense" : ""}`}>
           {/* Problem Side */}
-          <div className="animate-fade-up">
+          <div className={`animate-fade-up ${isRTL ? "lg:col-start-2" : ""}`}>
             <span className="text-sm font-medium text-destructive uppercase tracking-widest mb-4 block">
-              The Problem
+              {t("problem.label")}
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-8">
-              E-Bikes in Saudi 
-              <span className="block text-muted-foreground">Aren't Made For You</span>
+              {t("problem.headline1")}
+              <span className="block text-muted-foreground">{t("problem.headline2")}</span>
             </h2>
 
             <div className="space-y-6">
               {problems.map((problem, index) => (
                 <div
                   key={problem.title}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-destructive/50 transition-colors duration-300"
+                  className={`flex items-start gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-destructive/50 transition-colors duration-300 ${isRTL ? "flex-row-reverse text-right" : ""}`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="w-12 h-12 rounded-lg bg-destructive/10 flex items-center justify-center flex-shrink-0">
@@ -57,43 +67,33 @@ const ProblemSolutionSection = () => {
           </div>
 
           {/* Solution Side */}
-          <div className="relative animate-fade-up delay-200">
+          <div className={`relative animate-fade-up delay-200 ${isRTL ? "lg:col-start-1 lg:row-start-1" : ""}`}>
             <span className="text-sm font-medium text-primary uppercase tracking-widest mb-4 block">
-              The Solution
+              {t("solution.label")}
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-8">
-              Querabian Bikes
-              <span className="block text-gradient-accent">Changes Everything</span>
+              {t("solution.headline1")}
+              <span className="block text-gradient-accent">{t("solution.headline2")}</span>
             </h2>
 
             <div className="p-8 rounded-2xl gradient-card border border-primary/20 glow-accent">
-              <div className="flex items-center gap-4 mb-6">
+              <div className={`flex items-center gap-4 mb-6 ${isRTL ? "flex-row-reverse" : ""}`}>
                 <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center">
                   <Rocket className="w-8 h-8 text-primary" />
                 </div>
-                <div>
-                  <h3 className="font-display font-bold text-xl text-foreground">OUXI V8</h3>
-                  <p className="text-primary text-sm">Europe's Favorite Fat-Tire E-Bike</p>
+                <div className={isRTL ? "text-right" : ""}>
+                  <h3 className="font-display font-bold text-xl text-foreground">{t("solution.product")}</h3>
+                  <p className="text-primary text-sm">{t("solution.productSub")}</p>
                 </div>
               </div>
 
               <ul className="space-y-4">
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-foreground">Premium European design & quality</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-foreground">Viral-ready, Instagram-worthy style</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-foreground">Disruptive pricing — finally affordable</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-foreground">Built for Saudi streets & climate</span>
-                </li>
+                {solutionItems.map((item) => (
+                  <li key={item} className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                    <span className="text-foreground">{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

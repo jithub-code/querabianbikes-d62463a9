@@ -1,91 +1,83 @@
 import { Target, Lightbulb, Rocket } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutSection = () => {
+  const { t, isRTL } = useLanguage();
+
+  const values = [
+    {
+      icon: Target,
+      title: t("about.mission.title"),
+      description: t("about.mission.desc"),
+    },
+    {
+      icon: Lightbulb,
+      title: t("about.vision.title"),
+      description: t("about.vision.desc"),
+    },
+    {
+      icon: Rocket,
+      title: t("about.promise.title"),
+      description: t("about.promise.desc"),
+    },
+  ];
+
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className={`grid lg:grid-cols-2 gap-16 items-center ${isRTL ? "lg:grid-flow-dense" : ""}`}>
           {/* Content */}
-          <div className="animate-fade-up">
+          <div className={`animate-fade-up ${isRTL ? "lg:col-start-2 text-right" : ""}`}>
             <span className="text-sm font-medium text-primary uppercase tracking-widest mb-4 block">
-              About Us
+              {t("about.label")}
             </span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Built by Young <span className="text-gradient-accent">Entrepreneurs</span>
+              {t("about.headline1")} <span className="text-gradient-accent">{t("about.headline2")}</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Querabian Bikes was founded with a simple belief: premium mobility 
-              should be accessible to everyone. We're young, we're driven, and 
-              we're here to change how Saudi Arabia moves.
+              {t("about.description")}
             </p>
 
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Target className="w-6 h-6 text-primary" />
+              {values.map((value) => (
+                <div key={value.title} className={`flex items-start gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <value.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-lg text-foreground mb-1">
+                      {value.title}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {value.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-display font-bold text-lg text-foreground mb-1">
-                    Our Mission
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Make stylish, reliable mobility accessible to every young person in Saudi Arabia.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Lightbulb className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-display font-bold text-lg text-foreground mb-1">
-                    Our Vision
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Become Saudi Arabia's leading youth mobility brand, 
-                    expanding nationwide and beyond.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Rocket className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-display font-bold text-lg text-foreground mb-1">
-                    Our Promise
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Quality you can trust, style you'll love, and prices that make sense.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           {/* Visual */}
-          <div className="relative animate-fade-up delay-200">
+          <div className={`relative animate-fade-up delay-200 ${isRTL ? "lg:col-start-1 lg:row-start-1" : ""}`}>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="p-6 rounded-2xl bg-card border border-border">
-                  <p className="text-4xl font-display font-bold text-primary mb-2">1st</p>
-                  <p className="text-sm text-muted-foreground">OUXI V8 importer in KSA</p>
+                <div className={`p-6 rounded-2xl bg-card border border-border ${isRTL ? "text-right" : ""}`}>
+                  <p className="text-4xl font-display font-bold text-primary mb-2">{t("about.stat1.value")}</p>
+                  <p className="text-sm text-muted-foreground">{t("about.stat1.label")}</p>
                 </div>
-                <div className="p-6 rounded-2xl gradient-card border border-primary/20">
-                  <p className="text-4xl font-display font-bold text-foreground mb-2">50%+</p>
-                  <p className="text-sm text-muted-foreground">Savings vs competitors</p>
+                <div className={`p-6 rounded-2xl gradient-card border border-primary/20 ${isRTL ? "text-right" : ""}`}>
+                  <p className="text-4xl font-display font-bold text-foreground mb-2">{t("about.stat2.value")}</p>
+                  <p className="text-sm text-muted-foreground">{t("about.stat2.label")}</p>
                 </div>
               </div>
               <div className="space-y-4 mt-8">
-                <div className="p-6 rounded-2xl bg-card border border-border">
-                  <p className="text-4xl font-display font-bold text-primary mb-2">16-30</p>
-                  <p className="text-sm text-muted-foreground">Target age group</p>
+                <div className={`p-6 rounded-2xl bg-card border border-border ${isRTL ? "text-right" : ""}`}>
+                  <p className="text-4xl font-display font-bold text-primary mb-2">{t("about.stat3.value")}</p>
+                  <p className="text-sm text-muted-foreground">{t("about.stat3.label")}</p>
                 </div>
-                <div className="p-6 rounded-2xl bg-card border border-border">
+                <div className={`p-6 rounded-2xl bg-card border border-border ${isRTL ? "text-right" : ""}`}>
                   <p className="text-4xl font-display font-bold text-foreground mb-2">🇸🇦</p>
-                  <p className="text-sm text-muted-foreground">Made for Saudi streets</p>
+                  <p className="text-sm text-muted-foreground">{t("about.stat4.label")}</p>
                 </div>
               </div>
             </div>
