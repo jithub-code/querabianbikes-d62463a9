@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Check, Flame, Clock, Truck } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const PricingSection = () => {
+  const { t, isRTL } = useLanguage();
+
   const included = [
-    "OUXI V8 Fat-Tire E-Bike",
-    "Charger & Cable",
-    "User Manual",
-    "1 Year Warranty",
-    "Local Medina Support",
+    t("pricing.item1"),
+    t("pricing.item2"),
+    t("pricing.item3"),
+    t("pricing.item4"),
+    t("pricing.item5"),
   ];
 
   return (
@@ -22,13 +25,13 @@ const PricingSection = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-up">
           <span className="text-sm font-medium text-primary uppercase tracking-widest mb-4 block">
-            Launch Pricing
+            {t("pricing.label")}
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6">
-            Premium Bike, <span className="text-gradient-accent">Disruptive Price</span>
+            {t("pricing.headline1")} <span className="text-gradient-accent">{t("pricing.headline2")}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We're launching at a price that makes premium mobility accessible to everyone.
+            {t("pricing.subheadline")}
           </p>
         </div>
 
@@ -37,36 +40,36 @@ const PricingSection = () => {
           <div className="relative rounded-3xl bg-gradient-to-br from-card via-card to-primary/10 border-2 border-primary/30 p-8 md:p-12 animate-fade-up delay-100">
             {/* Badge */}
             <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-              <div className="flex items-center gap-2 px-6 py-2 rounded-full bg-primary text-primary-foreground font-display font-bold">
+              <div className={`flex items-center gap-2 px-6 py-2 rounded-full bg-primary text-primary-foreground font-display font-bold ${isRTL ? "flex-row-reverse" : ""}`}>
                 <Flame className="w-4 h-4" />
-                Launch Special
+                {t("pricing.badge")}
               </div>
             </div>
 
             {/* Price Comparison */}
             <div className="text-center mb-8 pt-4">
-              <p className="text-muted-foreground mb-2">Others charge</p>
+              <p className="text-muted-foreground mb-2">{t("pricing.othersCharge")}</p>
               <p className="text-3xl font-display text-muted-foreground line-through mb-4">
-                4,000 - 6,000 SAR
+                4,000 - 6,000 {isRTL ? "ريال" : "SAR"}
               </p>
-              <p className="text-muted-foreground mb-2">Our Launch Price</p>
-              <div className="flex items-baseline justify-center gap-2">
+              <p className="text-muted-foreground mb-2">{t("pricing.ourPrice")}</p>
+              <div className={`flex items-baseline justify-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
                 <span className="text-6xl md:text-7xl font-display font-bold text-foreground">
                   2,799
                 </span>
-                <span className="text-2xl font-display text-muted-foreground">SAR</span>
+                <span className="text-2xl font-display text-muted-foreground">{isRTL ? "ريال" : "SAR"}</span>
               </div>
-              <p className="text-primary font-medium mt-2">Save over 50%</p>
+              <p className="text-primary font-medium mt-2">{t("pricing.save")}</p>
             </div>
 
             {/* What's Included */}
             <div className="border-t border-border/50 pt-8 mb-8">
               <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-4 text-center">
-                What's Included
+                {t("pricing.included")}
               </p>
               <ul className="space-y-3">
                 {included.map((item) => (
-                  <li key={item} className="flex items-center gap-3">
+                  <li key={item} className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
                     <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
                       <Check className="w-3 h-3 text-primary" />
                     </div>
@@ -77,28 +80,28 @@ const PricingSection = () => {
             </div>
 
             {/* Delivery Note */}
-            <div className="flex items-center justify-center gap-4 p-4 rounded-xl bg-secondary/50 border border-border mb-8">
+            <div className={`flex items-center justify-center gap-4 p-4 rounded-xl bg-secondary/50 border border-border mb-8 ${isRTL ? "flex-row-reverse" : ""}`}>
               <Truck className="w-5 h-5 text-primary" />
-              <div>
-                <p className="text-sm text-foreground font-medium">Delivery Available</p>
-                <p className="text-xs text-muted-foreground">Medina pickup or delivery (fees apply)</p>
+              <div className={isRTL ? "text-right" : ""}>
+                <p className="text-sm text-foreground font-medium">{t("pricing.delivery")}</p>
+                <p className="text-xs text-muted-foreground">{t("pricing.deliveryNote")}</p>
               </div>
             </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="xl" className="flex-1">
-                Reserve Now
+                {t("pricing.cta1")}
               </Button>
               <Button variant="snapchat" size="xl" className="flex-1">
-                DM on Snapchat
+                {t("pricing.cta2")}
               </Button>
             </div>
 
             {/* Urgency */}
-            <div className="flex items-center justify-center gap-2 mt-6 text-sm text-muted-foreground">
+            <div className={`flex items-center justify-center gap-2 mt-6 text-sm text-muted-foreground ${isRTL ? "flex-row-reverse" : ""}`}>
               <Clock className="w-4 h-4 text-primary" />
-              <span>First batch limited • Price increases after sellout</span>
+              <span>{t("pricing.urgency")}</span>
             </div>
           </div>
         </div>

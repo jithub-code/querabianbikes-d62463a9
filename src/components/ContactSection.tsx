@@ -1,29 +1,32 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, MessageCircle, Instagram, Send, Phone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactSection = () => {
+  const { t, isRTL } = useLanguage();
+
   const contactMethods = [
     {
       icon: MessageCircle,
-      name: "Snapchat",
+      name: t("contact.snapchat"),
       handle: "@querabianbikes",
-      action: "DM Us",
+      action: t("contact.dmUs"),
       variant: "snapchat" as const,
       href: "https://snapchat.com/add/querabianbikes",
     },
     {
       icon: Phone,
-      name: "WhatsApp",
-      handle: "Click to Chat",
-      action: "Message",
+      name: t("contact.whatsapp"),
+      handle: t("contact.clickToChat"),
+      action: t("contact.message"),
       variant: "whatsapp" as const,
       href: "https://wa.me/966500000000",
     },
     {
       icon: Instagram,
-      name: "Instagram",
+      name: t("contact.instagram"),
       handle: "@querabianbikes",
-      action: "Follow",
+      action: t("contact.follow"),
       variant: "heroOutline" as const,
       href: "https://instagram.com/querabianbikes",
     },
@@ -38,14 +41,13 @@ const ContactSection = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-up">
           <span className="text-sm font-medium text-primary uppercase tracking-widest mb-4 block">
-            Get In Touch
+            {t("contact.label")}
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6">
-            Join the <span className="text-gradient-accent">Movement</span>
+            {t("contact.headline1")} <span className="text-gradient-accent">{t("contact.headline2")}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to own the streets? Reach out now to reserve your OUXI V8 
-            or ask any questions. We're here to help.
+            {t("contact.subheadline")}
           </p>
         </div>
 
@@ -80,11 +82,11 @@ const ContactSection = () => {
             <MapPin className="w-8 h-8 text-primary" />
           </div>
           <h3 className="font-display font-bold text-2xl text-foreground mb-2">
-            Pickup Location
+            {t("contact.location.title")}
           </h3>
-          <p className="text-lg text-muted-foreground mb-2">Medina, Saudi Arabia</p>
+          <p className="text-lg text-muted-foreground mb-2">{t("contact.location.city")}</p>
           <p className="text-sm text-muted-foreground">
-            Local pickup available • Delivery to other cities (fees apply)
+            {t("contact.location.note")}
           </p>
         </div>
 
@@ -92,33 +94,33 @@ const ContactSection = () => {
         <div className="max-w-xl mx-auto mt-16 animate-fade-up delay-400">
           <div className="p-8 rounded-2xl bg-card border border-border">
             <h3 className="font-display font-bold text-xl text-foreground mb-6 text-center">
-              Quick Inquiry
+              {t("contact.form.title")}
             </h3>
             <form className="space-y-4">
               <div>
                 <input
                   type="text"
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                  placeholder={t("contact.form.name")}
+                  className={`w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors ${isRTL ? "text-right" : ""}`}
                 />
               </div>
               <div>
                 <input
                   type="tel"
-                  placeholder="Phone / WhatsApp"
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                  placeholder={t("contact.form.phone")}
+                  className={`w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors ${isRTL ? "text-right" : ""}`}
                 />
               </div>
               <div>
                 <textarea
-                  placeholder="Your Message"
+                  placeholder={t("contact.form.message")}
                   rows={4}
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
+                  className={`w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none ${isRTL ? "text-right" : ""}`}
                 />
               </div>
               <Button variant="hero" size="lg" className="w-full">
                 <Send className="w-4 h-4" />
-                Send Message
+                {t("contact.form.submit")}
               </Button>
             </form>
           </div>

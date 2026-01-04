@@ -1,14 +1,16 @@
 import { Instagram, MessageCircle, Phone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t, isRTL } = useLanguage();
 
   return (
     <footer className="py-12 border-t border-border bg-card/50">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className={`flex flex-col md:flex-row items-center justify-between gap-8 ${isRTL ? "md:flex-row-reverse" : ""}`}>
           {/* Logo */}
-          <div className="text-center md:text-left">
+          <div className={`text-center ${isRTL ? "md:text-right" : "md:text-left"}`}>
             <a href="#" className="inline-flex items-center gap-2">
               <span className="text-2xl font-display font-bold text-foreground">
                 QUERABIAN
@@ -16,7 +18,7 @@ const Footer = () => {
               <span className="text-xs font-body text-primary tracking-widest">BIKES</span>
             </a>
             <p className="text-sm text-muted-foreground mt-2">
-              Urban mobility for Saudi Arabia's youth
+              {t("footer.tagline")}
             </p>
           </div>
 
@@ -49,12 +51,12 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="text-center md:text-right">
+          <div className={`text-center ${isRTL ? "md:text-left" : "md:text-right"}`}>
             <p className="text-sm text-muted-foreground">
-              © {currentYear} Querabian Bikes. All rights reserved.
+              © {currentYear} Querabian Bikes. {t("footer.rights")}
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              Medina, Saudi Arabia
+              {t("footer.location")}
             </p>
           </div>
         </div>

@@ -4,34 +4,37 @@ import bikeSide from "@/assets/bike-side.jpg";
 import tireDetail from "@/assets/tire-detail.jpg";
 import motorDetail from "@/assets/motor-detail.jpg";
 import batteryDetail from "@/assets/battery-detail.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProductShowcase = () => {
+  const { t, isRTL } = useLanguage();
+
   const features = [
     {
       icon: Mountain,
-      title: "Fat Tires",
-      description: "4-inch wide tires for maximum stability on any terrain",
+      title: t("product.feature1.title"),
+      description: t("product.feature1.desc"),
       image: tireDetail,
     },
     {
       icon: Zap,
-      title: "Powerful Motor",
-      description: "High-torque motor for smooth acceleration up to 45 km/h",
+      title: t("product.feature2.title"),
+      description: t("product.feature2.desc"),
       image: motorDetail,
     },
     {
       icon: Battery,
-      title: "Long Range",
-      description: "Up to 60km range on a single charge",
+      title: t("product.feature3.title"),
+      description: t("product.feature3.desc"),
       image: batteryDetail,
     },
   ];
 
   const specs = [
-    { icon: Gauge, label: "Top Speed", value: "45 km/h" },
-    { icon: Battery, label: "Range", value: "60 km" },
-    { icon: Zap, label: "Motor", value: "750W" },
-    { icon: Shield, label: "Warranty", value: "1 Year" },
+    { icon: Gauge, label: t("product.spec1"), value: "45 km/h" },
+    { icon: Battery, label: t("product.spec2"), value: "60 km" },
+    { icon: Zap, label: t("product.spec3"), value: "750W" },
+    { icon: Shield, label: t("product.spec4"), value: isRTL ? "سنة" : "1 Year" },
   ];
 
   return (
@@ -43,14 +46,13 @@ const ProductShowcase = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-up">
           <span className="text-sm font-medium text-primary uppercase tracking-widest mb-4 block">
-            Introducing
+            {t("product.label")}
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6">
-            The OUXI V8
+            {t("product.headline")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            The fat-tire e-bike that's dominating European streets. 
-            Bold design meets unstoppable performance.
+            {t("product.subheadline")}
           </p>
         </div>
 
@@ -67,9 +69,9 @@ const ProductShowcase = () => {
           </div>
 
           {/* Instagram Badge */}
-          <div className="absolute top-4 right-4 md:top-8 md:right-8 flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border">
+          <div className={`absolute top-4 ${isRTL ? "left-4 md:left-8" : "right-4 md:right-8"} flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border`}>
             <Camera className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">Instagram-Ready Design</span>
+            <span className="text-sm font-medium">{t("product.badge")}</span>
           </div>
         </div>
 
@@ -89,8 +91,8 @@ const ProductShowcase = () => {
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="flex items-center gap-3 mb-2">
+              <div className={`absolute bottom-0 left-0 right-0 p-6 ${isRTL ? "text-right" : ""}`}>
+                <div className={`flex items-center gap-3 mb-2 ${isRTL ? "flex-row-reverse" : ""}`}>
                   <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
                     <feature.icon className="w-5 h-5 text-primary" />
                   </div>
@@ -118,10 +120,10 @@ const ProductShowcase = () => {
         {/* CTA */}
         <div className="text-center animate-fade-up delay-600">
           <Button variant="hero" size="xl">
-            Reserve Your Bike
+            {t("product.cta")}
           </Button>
           <p className="text-sm text-muted-foreground mt-4">
-            Built for Saudi streets • Perfect for any terrain
+            {t("product.footer")}
           </p>
         </div>
       </div>

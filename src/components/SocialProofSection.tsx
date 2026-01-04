@@ -1,26 +1,29 @@
 import { MapPin, Star, Shield, Users } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const SocialProofSection = () => {
+  const { t, isRTL } = useLanguage();
+
   const proofPoints = [
     {
       icon: MapPin,
-      title: "Coming Soon to Medina",
-      description: "Local presence, real support",
+      title: t("proof.item1.title"),
+      description: t("proof.item1.desc"),
     },
     {
       icon: Star,
-      title: "European Best-Seller",
-      description: "Loved across the Netherlands",
+      title: t("proof.item2.title"),
+      description: t("proof.item2.desc"),
     },
     {
       icon: Shield,
-      title: "Trusted Quality",
-      description: "Premium build, reliable performance",
+      title: t("proof.item3.title"),
+      description: t("proof.item3.desc"),
     },
     {
       icon: Users,
-      title: "Youth Movement",
-      description: "Join the mobility revolution",
+      title: t("proof.item4.title"),
+      description: t("proof.item4.desc"),
     },
   ];
 
@@ -30,14 +33,13 @@ const SocialProofSection = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-up">
           <span className="text-sm font-medium text-primary uppercase tracking-widest mb-4 block">
-            Why Trust Us
+            {t("proof.label")}
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-            Be Part of Something <span className="text-gradient-accent">New</span>
+            {t("proof.headline1")} <span className="text-gradient-accent">{t("proof.headline2")}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We're launching a new era of urban mobility in Saudi Arabia. 
-            Early adopters get the best price and bragging rights.
+            {t("proof.subheadline")}
           </p>
         </div>
 
@@ -63,10 +65,10 @@ const SocialProofSection = () => {
         {/* Testimonial Placeholder */}
         <div className="mt-16 p-8 rounded-2xl bg-card border border-border text-center animate-fade-up delay-400">
           <p className="text-muted-foreground italic mb-4">
-            "Customer reviews and influencer clips coming soon as we launch."
+            "{t("proof.testimonial")}"
           </p>
           <p className="text-sm text-primary font-medium">
-            Be one of the first to share your experience
+            {t("proof.testimonialCta")}
           </p>
         </div>
       </div>
