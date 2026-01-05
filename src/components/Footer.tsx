@@ -1,6 +1,8 @@
 import { Instagram, MessageCircle, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+const WHATSAPP_NUMBER = "971505327617";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t, isRTL } = useLanguage();
@@ -28,25 +30,25 @@ const Footer = () => {
               href="https://snapchat.com/add/querabianbikes"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center hover:bg-primary/20 transition-colors duration-200"
+              className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center hover:bg-[#FFFC00] hover:text-black transition-all duration-200 hover:scale-110"
             >
-              <MessageCircle className="w-5 h-5 text-foreground" />
+              <MessageCircle className="w-5 h-5" />
             </a>
             <a
               href="https://instagram.com/querabianbikes"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center hover:bg-primary/20 transition-colors duration-200"
+              className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center hover:bg-primary/20 transition-all duration-200 hover:scale-110"
             >
               <Instagram className="w-5 h-5 text-foreground" />
             </a>
             <a
-              href="https://wa.me/966500000000"
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm interested in Querabian Bikes / the OUXI V8.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center hover:bg-primary/20 transition-colors duration-200"
+              className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-all duration-200 hover:scale-110"
             >
-              <Phone className="w-5 h-5 text-foreground" />
+              <Phone className="w-5 h-5" />
             </a>
           </div>
 
