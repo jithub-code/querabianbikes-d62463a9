@@ -47,7 +47,7 @@ const ProblemSolutionSection = () => {
               {problems.map((problem, index) => (
                 <div
                   key={problem.title}
-                  className={`flex items-start gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-destructive/50 transition-colors duration-300 ${isRTL ? "flex-row-reverse text-right" : ""}`}
+                  className={`flex items-start gap-4 p-4 rounded-xl bg-card/50 border border-border/50 hover:border-destructive/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-destructive/5 transition-all duration-300 cursor-default ${isRTL ? "flex-row-reverse text-right" : ""}`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="w-12 h-12 rounded-lg bg-destructive/10 flex items-center justify-center flex-shrink-0">
@@ -76,7 +76,7 @@ const ProblemSolutionSection = () => {
               <span className="block text-gradient-accent">{t("solution.headline2")}</span>
             </h2>
 
-            <div className="p-8 rounded-2xl gradient-card border border-primary/20 glow-accent">
+            <div className="p-8 rounded-2xl gradient-card border border-primary/20 glow-accent hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300">
               <div className={`flex items-center gap-4 mb-6 ${isRTL ? "flex-row-reverse" : ""}`}>
                 <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center">
                   <Rocket className="w-8 h-8 text-primary" />
