@@ -5,14 +5,14 @@ import heroBike from "@/assets/hero-bike.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ReservationModal from "./ReservationModal";
 import ImageLightbox from "./ImageLightbox";
-
 const HeroSection = () => {
-  const { t, isRTL } = useLanguage();
+  const {
+    t,
+    isRTL
+  } = useLanguage();
   const [isReservationOpen, setIsReservationOpen] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-
-  return (
-    <>
+  return <>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-pattern">
         {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
@@ -55,18 +55,10 @@ const HeroSection = () => {
 
               {/* CTA Buttons */}
               <div className={`flex flex-col sm:flex-row items-center gap-4 animate-fade-up delay-400 ${isRTL ? "justify-center lg:justify-end" : "justify-center lg:justify-start"}`}>
-                <Button 
-                  variant="hero" 
-                  size="xl"
-                  onClick={() => setIsReservationOpen(true)}
-                >
+                <Button variant="hero" size="xl" onClick={() => setIsReservationOpen(true)}>
                   {t("hero.cta1")}
                 </Button>
-                <Button 
-                  variant="heroOutline" 
-                  size="xl"
-                  onClick={() => setIsLightboxOpen(true)}
-                >
+                <Button variant="heroOutline" size="xl" onClick={() => setIsLightboxOpen(true)}>
                   {t("hero.cta2")}
                 </Button>
               </div>
@@ -79,15 +71,8 @@ const HeroSection = () => {
 
             {/* Hero Image */}
             <div className={`relative animate-fade-up delay-300 ${isRTL ? "lg:col-start-1 lg:row-start-1" : ""}`}>
-              <div 
-                className="relative z-10 cursor-pointer group"
-                onClick={() => setIsLightboxOpen(true)}
-              >
-                <img
-                  src={heroBike}
-                  alt="OUXI V8 Fat-Tire Electric Bike"
-                  className="w-full max-w-2xl mx-auto animate-float group-hover:scale-105 transition-transform duration-500"
-                />
+              <div className="relative z-10 cursor-pointer group" onClick={() => setIsLightboxOpen(true)}>
+                <img alt="OUXI V8 Fat-Tire Electric Bike" className="w-full max-w-2xl mx-auto animate-float group-hover:scale-105 transition-transform duration-500" src="/lovable-uploads/8b8913cb-27c1-4ed2-962c-b90651a55106.jpg" />
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 rounded-2xl transition-colors duration-300" />
               </div>
               {/* Glow behind bike */}
@@ -107,16 +92,8 @@ const HeroSection = () => {
         </div>
       </section>
 
-      <ReservationModal 
-        open={isReservationOpen} 
-        onOpenChange={setIsReservationOpen} 
-      />
-      <ImageLightbox 
-        open={isLightboxOpen} 
-        onOpenChange={setIsLightboxOpen} 
-      />
-    </>
-  );
+      <ReservationModal open={isReservationOpen} onOpenChange={setIsReservationOpen} />
+      <ImageLightbox open={isLightboxOpen} onOpenChange={setIsLightboxOpen} />
+    </>;
 };
-
 export default HeroSection;
