@@ -72,7 +72,7 @@ const HeroSection = () => {
             {/* Hero Image */}
             <div className={`relative animate-fade-up delay-300 ${isRTL ? "lg:col-start-1 lg:row-start-1" : ""}`}>
               <div className="relative z-10 cursor-pointer group" onClick={() => setIsLightboxOpen(true)}>
-                <img alt="OUXI V8 Fat-Tire Electric Bike" className="w-full max-w-2xl mx-auto animate-float group-hover:scale-105 transition-transform duration-500" src="/lovable-uploads/8b8913cb-27c1-4ed2-962c-b90651a55106.jpg" />
+                <img alt="OUXI V8 Fat-Tire Electric Bike" className="w-full max-w-2xl mx-auto animate-float group-hover:scale-105 transition-transform duration-500 rounded-lg" src="/lovable-uploads/8b8913cb-27c1-4ed2-962c-b90651a55106.jpg" />
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 rounded-2xl transition-colors duration-300" />
               </div>
               {/* Glow behind bike */}
