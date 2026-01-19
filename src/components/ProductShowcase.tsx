@@ -7,41 +7,46 @@ import motorDetail from "@/assets/motor-detail.jpg";
 import batteryDetail from "@/assets/battery-detail.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 import ReservationModal from "./ReservationModal";
-
 const ProductShowcase = () => {
-  const { t, isRTL } = useLanguage();
+  const {
+    t,
+    isRTL
+  } = useLanguage();
   const [isReservationOpen, setIsReservationOpen] = useState(false);
-
-  const features = [
-    {
-      icon: Mountain,
-      title: t("product.feature1.title"),
-      description: t("product.feature1.desc"),
-      image: tireDetail,
-    },
-    {
-      icon: Zap,
-      title: t("product.feature2.title"),
-      description: t("product.feature2.desc"),
-      image: motorDetail,
-    },
-    {
-      icon: Battery,
-      title: t("product.feature3.title"),
-      description: t("product.feature3.desc"),
-      image: batteryDetail,
-    },
-  ];
-
-  const specs = [
-    { icon: Gauge, label: t("product.spec1"), value: "45 km/h" },
-    { icon: Battery, label: t("product.spec2"), value: "60 km" },
-    { icon: Zap, label: t("product.spec3"), value: "750W" },
-    { icon: Shield, label: t("product.spec4"), value: isRTL ? "سنة" : "1 Year" },
-  ];
-
-  return (
-    <>
+  const features = [{
+    icon: Mountain,
+    title: t("product.feature1.title"),
+    description: t("product.feature1.desc"),
+    image: tireDetail
+  }, {
+    icon: Zap,
+    title: t("product.feature2.title"),
+    description: t("product.feature2.desc"),
+    image: motorDetail
+  }, {
+    icon: Battery,
+    title: t("product.feature3.title"),
+    description: t("product.feature3.desc"),
+    image: batteryDetail
+  }];
+  const specs = [{
+    icon: Gauge,
+    label: t("product.spec1"),
+    value: "45 km/h"
+  }, {
+    icon: Battery,
+    label: t("product.spec2"),
+    value: "60 km"
+  }, {
+    icon: Zap,
+    label: t("product.spec3"),
+    value: "750W"
+  }, {
+    icon: Shield,
+    label: t("product.spec4"),
+    value: isRTL ? "سنة" : "1 Year"
+  }];
+  return <>
       <section id="product" className="py-24 relative overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
@@ -63,11 +68,7 @@ const ProductShowcase = () => {
           {/* Main Product Image - Instagram badge removed */}
           <div className="relative mb-20 animate-fade-up delay-100">
             <div className="max-w-4xl mx-auto relative">
-              <img
-                src={bikeSide}
-                alt="OUXI V8 Electric Bike Side View"
-                className="w-full rounded-2xl"
-              />
+              <img alt="OUXI V8 Electric Bike Side View" className="w-full rounded-2xl shadow-none" src="/lovable-uploads/17cd6ad7-63cf-4bd6-982d-c866e667e700.jpg" />
               {/* Glow */}
               <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-3xl -z-10 scale-110" />
             </div>
@@ -75,18 +76,11 @@ const ProductShowcase = () => {
 
           {/* Features Grid */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {features.map((feature, index) => (
-              <div
-                key={feature.title}
-                className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 animate-fade-up"
-                style={{ animationDelay: `${(index + 2) * 100}ms` }}
-              >
+            {features.map((feature, index) => <div key={feature.title} className="group relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 animate-fade-up" style={{
+            animationDelay: `${(index + 2) * 100}ms`
+          }}>
                 <div className="aspect-square overflow-hidden">
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                  <img src={feature.image} alt={feature.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
                 <div className={`absolute bottom-0 left-0 right-0 p-6 ${isRTL ? "text-right" : ""}`}>
@@ -100,28 +94,21 @@ const ProductShowcase = () => {
                   </div>
                   <p className="text-muted-foreground text-sm">{feature.description}</p>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
 
           {/* Specs Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-2xl bg-card border border-border mb-12 animate-fade-up delay-500">
-            {specs.map((spec) => (
-              <div key={spec.label} className="text-center p-4 hover:bg-primary/5 rounded-xl transition-colors duration-300">
+            {specs.map(spec => <div key={spec.label} className="text-center p-4 hover:bg-primary/5 rounded-xl transition-colors duration-300">
                 <spec.icon className="w-6 h-6 text-primary mx-auto mb-2" />
                 <p className="text-2xl md:text-3xl font-display font-bold text-foreground">{spec.value}</p>
                 <p className="text-sm text-muted-foreground">{spec.label}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
 
           {/* CTA */}
           <div className="text-center animate-fade-up delay-600">
-            <Button 
-              variant="hero" 
-              size="xl"
-              onClick={() => setIsReservationOpen(true)}
-            >
+            <Button variant="hero" size="xl" onClick={() => setIsReservationOpen(true)}>
               {t("product.cta")}
             </Button>
             <p className="text-sm text-muted-foreground mt-4">
@@ -131,12 +118,7 @@ const ProductShowcase = () => {
         </div>
       </section>
 
-      <ReservationModal 
-        open={isReservationOpen} 
-        onOpenChange={setIsReservationOpen} 
-      />
-    </>
-  );
+      <ReservationModal open={isReservationOpen} onOpenChange={setIsReservationOpen} />
+    </>;
 };
-
 export default ProductShowcase;
