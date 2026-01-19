@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import bikeAngle1 from "@/assets/bike-angle-1.jpg";
-import bikeAngle2 from "@/assets/bike-angle-2.jpg";
-import bikeAngle3 from "@/assets/bike-angle-3.jpg";
-import bikeAngle4 from "@/assets/bike-angle-4.jpg";
-import bikeFront from "@/assets/bike-front.jpg";
+import heroBike from "@/assets/hero-bike.jpg";
+import bikeSide from "@/assets/bike-side.jpg";
 import tireDetail from "@/assets/tire-detail.jpg";
 import motorDetail from "@/assets/motor-detail.jpg";
 import batteryDetail from "@/assets/battery-detail.jpg";
@@ -16,11 +13,8 @@ interface ImageLightboxProps {
 }
 
 const images = [
-  { src: bikeAngle1, alt: "OUXI V8 Rear Angle View" },
-  { src: bikeAngle2, alt: "OUXI V8 Side Profile" },
-  { src: bikeAngle3, alt: "OUXI V8 Front Angle View" },
-  { src: bikeAngle4, alt: "OUXI V8 Three Quarter View" },
-  { src: bikeFront, alt: "OUXI V8 Front View" },
+  { src: heroBike, alt: "OUXI V8 Front View" },
+  { src: bikeSide, alt: "OUXI V8 Side View" },
   { src: tireDetail, alt: "OUXI V8 Fat Tire Detail" },
   { src: motorDetail, alt: "OUXI V8 Motor Detail" },
   { src: batteryDetail, alt: "OUXI V8 Battery Detail" },
